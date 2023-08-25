@@ -1,4 +1,5 @@
 import { Controller, Get, HttpStatus, Req, Res } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import axios from 'axios';
 import { Request, Response } from 'express';
 
@@ -7,6 +8,8 @@ export class AppController {
   constructor() {}
 
   @Get('/gerar-mensagem')
+  // swagger
+  @ApiTags('gerar-mensagem')
   async get(@Res() res: Response, @Req() req: Request): Promise<Response> {
     try {
       const { data } = await axios.get('https://api.adviceslip.com/advice');
